@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Finance Quotation App
 
-## Getting Started
+Este é um projeto criado com React e Typescript, que tem como objetivo exibir cotações de moedas, ações e outros ativos financeiros. A aplicação permite que os usuários façam login, visualizem cotações em tempo real e acompanhem a evolução dos preços ao longo do tempo.
 
-First, run the development server:
+## 📦 Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- React
+- Typescript
+- Next.js
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 📋 Task List
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🔐 Autenticação e Usuário
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [ ] Criar tela de login com campos de e-mail/usuário e senha
+- [ ] Implementar tela de cadastro para novos usuários
+- [ ] Persistir dados do usuário no LocalStorage após cadastro
+- [ ] Validar login com dados armazenados localmente
+- [ ] Implementar verificação de sessão ativa (com tempo de expiração)
+- [ ] Redirecionar usuário para login se a sessão estiver inativa
+- [ ] Implementar logout automático após expiração da sessão
 
-## Learn More
+## 🌐 Integração com API
 
-To learn more about Next.js, take a look at the following resources:
+- [ ] Conectar à API: `https://hgbrasil.com/status/finance/`
+- [ ] Buscar dados de 10 itens (moedas, ações, etc.)
+- [ ] Tratar erros de requisição e exibir mensagens adequadas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📊 Funcionalidades Principais
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [ ] Criar dashboard com listagem de todas as cotações
+- [ ] Exibir valores de cotação com:
+  - [ ] Valor em **verde** se a variação diária for positiva
+  - [ ] Valor em **vermelho** se a variação diária for negativa
+- [ ] Permitir seleção de um item para visualização detalhada
 
-## Deploy on Vercel
+## 📈 Gráfico de Evolução
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [ ] Armazenar histórico de preços desde a inicialização da aplicação
+- [ ] Implementar gráfico com evolução de preços para item selecionado
+- [ ] Atualizar gráfico conforme novos dados forem buscados
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔁 Navegação e Fluxo
+
+- [ ] Proteger rotas que requerem autenticação
+- [ ] Manter usuário na aplicação se a sessão estiver válida
+- [ ] Redirecionar usuário deslogado para tela de login
+
+## 💅 Extras (opcional)
+
+- [ ] Estilizar com framework (ex: Tailwind, Bootstrap)
+- [ ] Adicionar loading/spinner durante requisições
+- [ ] Criar mensagens de erro e sucesso amigáveis ao usuário
