@@ -12,13 +12,13 @@ Este é um projeto criado com React e Typescript, que tem como objetivo exibir c
 
 ## 🔐 Autenticação e Usuário
 
-- [ ] Criar tela de login com campos de e-mail/usuário e senha
-- [ ] Implementar tela de cadastro para novos usuários
-- [ ] Persistir dados do usuário no LocalStorage após cadastro
-- [ ] Validar login com dados armazenados localmente
-- [ ] Implementar verificação de sessão ativa (com tempo de expiração)
-- [ ] Redirecionar usuário para login se a sessão estiver inativa
-- [ ] Implementar logout automático após expiração da sessão
+- [x] Criar tela de login com campos de e-mail/usuário e senha
+- [x] Implementar tela de cadastro para novos usuários
+- [x] Persistir dados do usuário no LocalStorage após cadastro
+- [x] Validar login com dados armazenados localmente
+- [x] Implementar verificação de sessão ativa (com tempo de expiração)
+- [x] Redirecionar usuário para login se a sessão estiver inativa
+- [x] Implementar logout automático após expiração da sessão
 
 ## 🌐 Integração com API
 
