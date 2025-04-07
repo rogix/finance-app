@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { User } from "@/app/types";
 
@@ -13,14 +13,31 @@ export function useAuth(options?: UseAuthOptions) {
   const router = useRouter();
   const pathname = usePathname();
 
+  const logout = useCallback(() => {
+    localStorage.removeItem("session");
+    setUser(null);
+    router.push("/");
+  }, [router]);
+
   useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+
     const sessionStr = localStorage.getItem("session");
     if (sessionStr) {
       try {
         const session = JSON.parse(sessionStr);
         if (session.expiresAt > Date.now()) {
           setUser(session.user);
-          return;
+
+          const timeout = session.expiresAt - Date.now();
+          timer = setTimeout(() => {
+            alert("Your session has expired. You will be logged out.");
+            logout();
+          }, timeout);
+
+          return () => {
+            clearTimeout(timer);
+          };
         }
       } catch (error) {
         console.error("Error parsing session", error);
@@ -28,19 +45,16 @@ export function useAuth(options?: UseAuthOptions) {
     }
     setUser(null);
 
-    if (
-      redirectProtected &&
-      !["/", "/login", "/register"].includes(pathname)
-    ) {
+    if (redirectProtected && !["/", "/login", "/register"].includes(pathname)) {
       router.push("/");
     }
-  }, [pathname, redirectProtected, router]);
 
-  const logout = () => {
-    localStorage.removeItem("session");
-    setUser(null);
-    router.push("/");
-  };
+    return () => {
+      if (timer) clearTimeout(timer);
+    };
+  }, [logout, pathname, redirectProtected, router]);
+
+
 
   return { user, logout };
 }
