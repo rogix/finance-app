@@ -3,7 +3,7 @@
 import { User, Session } from '@/app/types';
 
 const SESSION_KEY = 'session';
-const SESSION_DURATION = 60 * 1000; // 1 minute
+const SESSION_DURATION = 60 * 1000 * 60; // 1 hour
 
 export function createSession(user: User): void {
   const expiresAt = Date.now() + SESSION_DURATION;
