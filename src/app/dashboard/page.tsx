@@ -5,6 +5,7 @@ import { useAuth } from "@/app/hooks/useAuth";
 import { useFinanceData, Quote } from "@/app/hooks/useFinanceData";
 import PriceChart from "@/app/components/PriceChart";
 import Header from "@/app/components/Header";
+import Loading from "@/app/components/Loader";
 
 export default function DashboardPage() {
   const { quotes, loading, error, priceHistory } = useFinanceData();
@@ -21,9 +22,7 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-gray-900 text-gray-100">
       <Header />
       <main className="container mx-auto py-8">
-        {loading && (
-          <p className="text-center text-gray-300">Carregando dados...</p>
-        )}
+        {loading && <Loading />}
         {error && <p className="text-center text-red-500">Erro: {error}</p>}
         {!loading && !error && (
           <div className="flex flex-col md:flex-row gap-8">
