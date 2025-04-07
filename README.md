@@ -2,6 +2,19 @@
 
 Este projeto é uma aplicação web desenvolvida com Next.js (app folder) e TypeScript que permite aos usuários acompanhar cotações de ações e moedas em tempo real. Utiliza Tailwind CSS para um design moderno em dark mode e integra a API de finanças do HG Brasil para exibir dados atualizados. Além disso, conta com autenticação simples (cadastro, login, logout) e gerenciamento de sessão via localStorage.
 
+## Index
+
+- [📦 Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [⚙️ Funcionalidades](#-funcionalidades)
+- [🔐 Autenticação e Sessão](#-autenticação-e-sessão)
+- [📊 Gráfico de evolução](#-gráfico-de-evolução)
+- [📈 Gráfico de Evolução](#-gráfico-de-evolução)
+- [💅 Design Responsivo e Dark Mode](#-design-responsivo-e-dark-mode)
+- [🗂️ Estrutura do Projeto](#-estrutura-do-projeto)
+- [📦 Instalação](#-instalação)
+- [🌟 Melhorias Futuras](#-melhorias-futuras)
+- [✅ Todo](#-todo)
+
 ## 📦 Tecnologias Utilizadas
 
 - [React](https://reactjs.org/)
@@ -11,7 +24,7 @@ Este projeto é uma aplicação web desenvolvida com Next.js (app folder) e Type
 - [Recharts](https://recharts.org/en-US/)
 - API de Finanças: `https://hgbrasil.com/status/finance/`
 
-## Funcionalidades
+## ⚙️ Funcionalidades
 
 ## 🔐 Autenticação e Sessão
 
@@ -37,7 +50,7 @@ Este projeto é uma aplicação web desenvolvida com Next.js (app folder) e Type
 - UI moderna com um esquema de cores em tons de cinza e cyan
 - Header customizado reutilizável que exibe o nome do usuário se logado
 
-## Estrutura do Projeto
+## 🗂️ Estrutura do Projeto
 
 ```plaintext
 ├── public/                       # Arquivos estáticos (ex.: imagens, ícones)
@@ -100,7 +113,7 @@ http://localhost:3000
 7. Desfrute da experiência de acompanhar as cotações em tempo real!
 8. Para encerrar o servidor, pressione `Ctrl + C` no terminal
 
-# Melhorias Futuras
+## 🌟 Melhorias Futuras
 
 Esta seção lista algumas melhorias que podem ser implementadas para aprimorar a aplicação:
 
@@ -139,7 +152,7 @@ Esta seção lista algumas melhorias que podem ser implementadas para aprimorar 
 
 ---
 
-## Todo
+## ✅ Todo
 
 ## 🔐 Autenticação e Usuário
 
