@@ -40,26 +40,30 @@ Este projeto é uma aplicação web desenvolvida com Next.js (app folder) e Type
 ## Estrutura do Projeto
 
 ```plaintext
-/
 ├── app/
+│   ├── api/
+│   │   ├── finance/
+│   │   │   └── route.ts          # Rota da API para buscar dados financeiros
 │   ├── components/
-│   │   └── Header.tsx
+│   │   ├── Header.tsx            # Componente reutilizável de cabeçalho com informações do usuário
+│   │   ├── Loader.tsx            # Componente de carregamento para exibir estados de loading
+│   │   └── PriceChart.tsx        # Componente para renderizar gráficos de evolução de preços
 │   ├── hooks/
-│   │   ├── useAuth.ts
-│   │   └── useFinanceData.ts
+│   │   ├── useAuth.ts            # Hook customizado para lógica de autenticação
+│   │   └── useFinanceData.ts     # Hook customizado para buscar e gerenciar dados financeiros
 │   ├── lib/
-│   │   └── session.ts
+│   │   └── session.ts            # Funções utilitárias para gerenciamento de sessão
 │   ├── types/
-│   │   └── index.ts
+│   │   └── index.ts              # Tipos e interfaces do TypeScript
 │   ├── dashboard/
-│   │   └── page.tsx
+│   │   └── page.tsx              # Página de dashboard exibindo dados financeiros
 │   ├── login/
-│   │   └── page.tsx
+│   │   └── page.tsx              # Página de login para autenticação de usuários
 │   ├── register/
-│   │   └── page.tsx
-│   └── page.tsx         // Landing page
-├── public/
-└── package.json
+│   │   └── page.tsx              # Página de registro para novos usuários
+│   └── page.tsx                  # Ponto de entrada principal da aplicação
+├── public/                       # Arquivos estáticos (ex.: imagens, ícones)
+└── package.json                  # Dependências e scripts do projeto
 ```
 
 # 📦 Instalação
@@ -137,5 +141,5 @@ http://localhost:3000
 ## 💅 Extras (opcional)
 
 - [x] Estilizar com framework (ex: Tailwind, Bootstrap)
-- [ ] Adicionar loading/spinner durante requisições
+- [x] Adicionar loading/spinner durante requisições
 - [x] Criar mensagens de erro e sucesso amigáveis ao usuário
