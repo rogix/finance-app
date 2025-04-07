@@ -6,7 +6,7 @@ export default function Home() {
     <>
       <Header />
 
-      <section className="relative min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex flex-col items-center justify-center text-center pt-24">
+      <section className="relative min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex flex-col items-center text-center pt-40">
         <div className="px-6 py-12 relative z-10">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
             Acesse cotações em tempo real

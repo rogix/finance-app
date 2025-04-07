@@ -7,7 +7,11 @@ export default function Header() {
   const { user, logout } = useAuth();
 
   return (
-    <header className="flex items-center justify-between w-full bg-gray-800 p-6 text-white fixed top-0 z-10">
+    <header
+      className={`flex items-center justify-between w-full bg-gray-800 p-6 text-white ${
+        !user ? "fixed top-0 z-10" : ""
+      }`}
+    >
       <h1 className="text-3xl font-bold">
         <Link href="/">Cotação de Ações</Link>
       </h1>
