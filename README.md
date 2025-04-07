@@ -129,26 +129,11 @@ Esta seção lista algumas melhorias que podem ser implementadas para aprimorar 
   - Implementar cache e revalidação de dados (por exemplo, com SWR ou React Query) para reduzir requisições repetidas à API.
   - Realizar code-splitting e lazy loading de componentes para melhorar a performance.
 
-- **Interface e Experiência do Usuário:**
-
-  - Aprimorar a responsividade e a acessibilidade (uso de ARIA, melhor contraste, navegação por teclado).
-  - Refinar animações e transições para uma experiência mais suave.
-  - Adicionar temas customizáveis (modo claro e escuro) de forma dinâmica.
-
-- **Persistência de Dados:**
-
-  - Persistir o histórico de preços além da sessão atual, utilizando IndexedDB ou outra solução de armazenamento local.
-  - Integrar um sistema de logging ou monitoramento de erros (como Sentry) para facilitar a identificação e correção de problemas em produção.
-
 - **Testes e Qualidade do Código:**
 
   - Implementar testes unitários e de integração para componentes e hooks.
   - Adotar ferramentas de linting e formatação (como ESLint e Prettier) para manter a consistência do código.
   - Configurar testes end-to-end para simular fluxos críticos da aplicação.
-
-- **Integração com APIs Externas:**
-  - Melhorar o proxy da API para lidar com autenticação e CORS, garantindo maior estabilidade.
-  - Expandir a integração para suportar múltiplos endpoints e diferentes fontes de dados.
 
 ---
 
