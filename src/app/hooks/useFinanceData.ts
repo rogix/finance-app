@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useCallback } from "react";
+import { INTERVAL_FETCH_TIME, MAX_ITEMS } from "@/app/config/constants";
 
 export type Quote = {
     id: string;
@@ -71,7 +72,7 @@ export function useFinanceData() {
                 quotesArray = quotesArray.concat(processStocks(data.results.stocks));
             }
 
-            const limitedQuotes = quotesArray.slice(0, 10);
+            const limitedQuotes = quotesArray.slice(0, MAX_ITEMS);
             setQuotes(limitedQuotes);
 
             setPriceHistory((prevHistory) => {
@@ -97,7 +98,7 @@ export function useFinanceData() {
 
     useEffect(() => {
         fetchFinanceData();
-        const interval = setInterval(fetchFinanceData, 60000);
+        const interval = setInterval(fetchFinanceData, INTERVAL_FETCH_TIME);
         return () => clearInterval(interval);
     }, [fetchFinanceData]);
 

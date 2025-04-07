@@ -16,7 +16,7 @@ export function useAuth(options?: UseAuthOptions) {
   const logout = useCallback(() => {
     localStorage.removeItem("session");
     setUser(null);
-    router.push("/");
+    router.push("/login");
   }, [router]);
 
   useEffect(() => {
@@ -31,7 +31,6 @@ export function useAuth(options?: UseAuthOptions) {
 
           const timeout = session.expiresAt - Date.now();
           timer = setTimeout(() => {
-            alert("Your session has expired. You will be logged out.");
             logout();
           }, timeout);
 
@@ -46,7 +45,7 @@ export function useAuth(options?: UseAuthOptions) {
     setUser(null);
 
     if (redirectProtected && !["/", "/login", "/register"].includes(pathname)) {
-      router.push("/");
+      router.push("/login");
     }
 
     return () => {

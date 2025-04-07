@@ -40,6 +40,7 @@ Este projeto é uma aplicação web desenvolvida com Next.js (app folder) e Type
 ## Estrutura do Projeto
 
 ```plaintext
+├── public/                       # Arquivos estáticos (ex.: imagens, ícones)
 ├── app/
 │   ├── api/
 │   │   ├── finance/
@@ -48,21 +49,22 @@ Este projeto é uma aplicação web desenvolvida com Next.js (app folder) e Type
 │   │   ├── Header.tsx            # Componente reutilizável de cabeçalho com informações do usuário
 │   │   ├── Loader.tsx            # Componente de carregamento para exibir estados de loading
 │   │   └── PriceChart.tsx        # Componente para renderizar gráficos de evolução de preços
+│   ├── config/
+│   │   └── constants.ts          # Tempo da sessão e outras constantes
+│   ├── dashboard/
+│   │   └── page.tsx              # Página de dashboard exibindo dados financeiros
 │   ├── hooks/
 │   │   ├── useAuth.ts            # Hook customizado para lógica de autenticação
 │   │   └── useFinanceData.ts     # Hook customizado para buscar e gerenciar dados financeiros
 │   ├── lib/
 │   │   └── session.ts            # Funções utilitárias para gerenciamento de sessão
-│   ├── types/
-│   │   └── index.ts              # Tipos e interfaces do TypeScript
-│   ├── dashboard/
-│   │   └── page.tsx              # Página de dashboard exibindo dados financeiros
 │   ├── login/
 │   │   └── page.tsx              # Página de login para autenticação de usuários
 │   ├── register/
 │   │   └── page.tsx              # Página de registro para novos usuários
+│   ├── types/
+│   │   └── index.ts              # Tipos e interfaces do TypeScript
 │   └── page.tsx                  # Ponto de entrada principal da aplicação
-├── public/                       # Arquivos estáticos (ex.: imagens, ícones)
 └── package.json                  # Dependências e scripts do projeto
 ```
 
@@ -97,6 +99,43 @@ http://localhost:3000
 6. Navegue pelas cotações e visualize os gráficos de evolução
 7. Desfrute da experiência de acompanhar as cotações em tempo real!
 8. Para encerrar o servidor, pressione `Ctrl + C` no terminal
+
+# Melhorias Futuras
+
+Esta seção lista algumas melhorias que podem ser implementadas para aprimorar a aplicação:
+
+- **Autenticação e Segurança:**
+
+  - Migrar para uma solução de autenticação mais robusta (por exemplo, JWT com cookies HttpOnly ou NextAuth).
+  - Implementar verificação de token e renovação automática de sessão no lado do servidor.
+  - Melhorar o tratamento de erros de autenticação e mensagens para o usuário.
+
+- **Gerenciamento de Estado e Performance:**
+
+  - Utilizar uma biblioteca de gerenciamento de estado (como Redux, Zustand ou Context API) para centralizar o estado da aplicação.
+  - Implementar cache e revalidação de dados (por exemplo, com SWR ou React Query) para reduzir requisições repetidas à API.
+  - Realizar code-splitting e lazy loading de componentes para melhorar a performance.
+
+- **Interface e Experiência do Usuário:**
+
+  - Aprimorar a responsividade e a acessibilidade (uso de ARIA, melhor contraste, navegação por teclado).
+  - Refinar animações e transições para uma experiência mais suave.
+  - Adicionar temas customizáveis (modo claro e escuro) de forma dinâmica.
+
+- **Persistência de Dados:**
+
+  - Persistir o histórico de preços além da sessão atual, utilizando IndexedDB ou outra solução de armazenamento local.
+  - Integrar um sistema de logging ou monitoramento de erros (como Sentry) para facilitar a identificação e correção de problemas em produção.
+
+- **Testes e Qualidade do Código:**
+
+  - Implementar testes unitários e de integração para componentes e hooks.
+  - Adotar ferramentas de linting e formatação (como ESLint e Prettier) para manter a consistência do código.
+  - Configurar testes end-to-end para simular fluxos críticos da aplicação.
+
+- **Integração com APIs Externas:**
+  - Melhorar o proxy da API para lidar com autenticação e CORS, garantindo maior estabilidade.
+  - Expandir a integração para suportar múltiplos endpoints e diferentes fontes de dados.
 
 ---
 

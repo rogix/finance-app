@@ -1,10 +1,11 @@
+import { API_URL } from '@/app/config/constants';
 import { NextResponse } from 'next/server';
 
 const API_KEY = process.env.HG_API_KEY;
 
 export async function GET() {
   try {
-    const response = await fetch(`https://api.hgbrasil.com/finance?key=${API_KEY}`);
+    const response = await fetch(`${API_URL}?key=${API_KEY}`);
     if (!response.ok) {
       return NextResponse.json(
         { error: 'Erro na requisição externa' },
