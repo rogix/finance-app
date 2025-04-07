@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createSession } from "@/app/lib/session";
 import { User } from "@/app/types";
@@ -90,6 +91,14 @@ export default function LoginPage() {
           >
             Cadastrar
           </a>
+        </p>
+        <p className="mt-5 text-center">
+          <Link
+            href="/"
+            className="text-yellow-700 hover:underline font-semibold"
+          >
+            Voltar para a página inicial
+          </Link>
         </p>
       </section>
     </div>

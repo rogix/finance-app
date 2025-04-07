@@ -4,11 +4,12 @@ import { useState } from "react";
 import { useAuth } from "@/app/hooks/useAuth";
 import { useFinanceData, Quote } from "@/app/hooks/useFinanceData";
 import PriceChart from "@/app/ui/PriceChart";
+import Header from "../ui/Header";
 
 export default function DashboardPage() {
   const { quotes, loading, error, priceHistory } = useFinanceData();
   const [selectedQuote, setSelectedQuote] = useState<Quote | null>(null);
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
 
   const handleSelectQuote = (quote: Quote) => {
     setSelectedQuote(quote);
@@ -18,15 +19,7 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
-      <header className="p-4 bg-gray-800 flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
-        <button
-          className="px-4 py-2 bg-red-500 rounded hover:bg-red-600 transition"
-          onClick={logout}
-        >
-          Logout
-        </button>
-      </header>
+      <Header />
       <main className="container mx-auto py-8">
         {loading && (
           <p className="text-center text-gray-300">Carregando dados...</p>

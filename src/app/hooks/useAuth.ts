@@ -1,34 +1,46 @@
 "use client";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { getSession, deleteSession } from "@/app/lib/session";
+import { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
 import { User } from "@/app/types";
 
-export function useAuth() {
-    const router = useRouter();
-    const [user, setUser] = useState<User | null>(null);
+type UseAuthOptions = {
+  redirectProtected?: boolean;
+};
 
-    useEffect(() => {
-        const session = getSession();
-        if (!session || session.expiresAt < Date.now()) {
-            deleteSession();
-            router.push("/login");
-        } else {
-            setUser(session.user);
-            const remainingTime = session.expiresAt - Date.now();
-            const timer = setTimeout(() => {
-                alert("Sessão expirada. Você será deslogado.");
-                deleteSession();
-                router.push("/login");
-            }, remainingTime);
-            return () => clearTimeout(timer);
+export function useAuth(options?: UseAuthOptions) {
+  const { redirectProtected = false } = options || {};
+  const [user, setUser] = useState<User | null>(null);
+  const router = useRouter();
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const sessionStr = localStorage.getItem("session");
+    if (sessionStr) {
+      try {
+        const session = JSON.parse(sessionStr);
+        if (session.expiresAt > Date.now()) {
+          setUser(session.user);
+          return;
         }
-    }, [router]);
+      } catch (error) {
+        console.error("Error parsing session", error);
+      }
+    }
+    setUser(null);
 
-    const logout = () => {
-        deleteSession();
-        router.push("/login");
-    };
+    if (
+      redirectProtected &&
+      !["/", "/login", "/register"].includes(pathname)
+    ) {
+      router.push("/");
+    }
+  }, [pathname, redirectProtected, router]);
 
-    return { user, logout };
+  const logout = () => {
+    localStorage.removeItem("session");
+    setUser(null);
+    router.push("/");
+  };
+
+  return { user, logout };
 }

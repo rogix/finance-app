@@ -1,25 +1,12 @@
+import Header from "@/app/ui/Header";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <>
-      <header className="flex items-center justify-between w-full bg-gray-800 p-6 text-white fixed top-0 z-10">
-        <h1 className="text-3xl font-bold">Cotação de Ações</h1>
-        <nav className="flex gap-4">
-          <a
-            className="px-5 py-2 bg-cyan-600 text-white rounded hover:bg-cyan-700 transition-colors"
-            href="/register"
-          >
-            Cadastrar
-          </a>
-          <a
-            className="px-5 py-2 bg-cyan-600 text-white rounded hover:bg-cyan-700 transition-colors"
-            href="/login"
-          >
-            Entrar
-          </a>
-        </nav>
-      </header>
+      <Header />
 
-      <section className="relative min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex flex-col items-center justify-center text-center">
+      <section className="relative min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 flex flex-col items-center justify-center text-center pt-24">
         <div className="px-6 py-12 relative z-10">
           <h2 className="text-5xl md:text-6xl font-bold text-white mb-6">
             Acesse cotações em tempo real
@@ -29,18 +16,18 @@ export default function Home() {
             informados.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
+            <Link
               href="/register"
               className="px-8 py-4 bg-cyan-600 text-white rounded-md hover:bg-cyan-700 transition-colors"
             >
               Cadastrar
-            </a>
-            <a
+            </Link>
+            <Link
               href="/login"
               className="px-8 py-4 border border-cyan-600 text-cyan-600 rounded-md hover:bg-cyan-600 hover:text-white transition-colors"
             >
               Entrar
-            </a>
+            </Link>
           </div>
         </div>
 
