@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { useAuth } from "@/app/hooks/useAuth";
 import { useFinanceData, Quote } from "@/app/hooks/useFinanceData";
-import PriceChart from "@/app/ui/PriceChart";
-import Header from "../ui/Header";
+import PriceChart from "@/app/components/PriceChart";
+import Header from "@/app/components/Header";
 
 export default function DashboardPage() {
   const { quotes, loading, error, priceHistory } = useFinanceData();
