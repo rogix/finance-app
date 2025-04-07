@@ -10,6 +10,7 @@ type UseAuthOptions = {
 export function useAuth(options?: UseAuthOptions) {
   const { redirectProtected = false } = options || {};
   const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -21,7 +22,6 @@ export function useAuth(options?: UseAuthOptions) {
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
-
     const sessionStr = localStorage.getItem("session");
     if (sessionStr) {
       try {
@@ -34,6 +34,7 @@ export function useAuth(options?: UseAuthOptions) {
             logout();
           }, timeout);
 
+          setLoading(false);
           return () => {
             clearTimeout(timer);
           };
@@ -43,6 +44,7 @@ export function useAuth(options?: UseAuthOptions) {
       }
     }
     setUser(null);
+    setLoading(false);
 
     if (redirectProtected && !["/", "/login", "/register"].includes(pathname)) {
       router.push("/login");
@@ -53,7 +55,5 @@ export function useAuth(options?: UseAuthOptions) {
     };
   }, [logout, pathname, redirectProtected, router]);
 
-
-
-  return { user, logout };
+  return { user, logout, loading };
 }

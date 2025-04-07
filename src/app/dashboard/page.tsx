@@ -13,15 +13,15 @@ export default function DashboardPage() {
   const [selectedQuote, setSelectedQuote] = useState<Quote | null>(null);
   const router = useRouter();
 
-  const { user } = useAuth();
+  const { user, loading: authLoading } = useAuth();
 
   useEffect(() => {
-    if (!user) {
+    if (!authLoading && !user) {
       router.push("/login");
     }
-  }, [user, router]);
+  }, [user, router, authLoading]);
 
-  if (!user) {
+  if (authLoading || !user) {
     return null;
   }
 
