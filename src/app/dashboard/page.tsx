@@ -1,27 +1,38 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/app/hooks/useAuth";
 import { useFinanceData, Quote } from "@/app/hooks/useFinanceData";
 import PriceChart from "@/app/components/PriceChart";
 import Header from "@/app/components/Header";
 import Loading from "@/app/components/Loader";
+import { useRouter } from "next/navigation";
 
 export default function DashboardPage() {
   const { quotes, loading, error, priceHistory } = useFinanceData();
   const [selectedQuote, setSelectedQuote] = useState<Quote | null>(null);
+  const router = useRouter();
+
   const { user } = useAuth();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user, router]);
+
+  if (!user) {
+    return null;
+  }
 
   const handleSelectQuote = (quote: Quote) => {
     setSelectedQuote(quote);
   };
 
-  if (!user) return null;
-
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
       <Header />
-      <main className="container mx-auto py-8">
+      <main className="container mx-auto py-8 px-5">
         {loading && <Loading />}
         {error && <p className="text-center text-red-500">Erro: {error}</p>}
         {!loading && !error && (

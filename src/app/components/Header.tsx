@@ -12,7 +12,7 @@ export default function Header() {
         !user ? "fixed top-0 z-10" : ""
       }`}
     >
-      <h1 className="text-3xl font-bold">
+      <h1 className="text-2xl sm:text-3xl font-bold">
         <Link href="/">Cotação de Ações</Link>
       </h1>
       <nav className="flex gap-4 items-center">
