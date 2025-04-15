@@ -1,7 +1,12 @@
+"use client";
+
 import Header from "@/app/components/Header";
 import Link from "next/link";
+import { useAuthRedirect } from "@/app/hooks/useAuthRedirect";
 
 export default function Home() {
+  useAuthRedirect();
+
   return (
     <>
       <Header />

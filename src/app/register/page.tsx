@@ -1,8 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { User } from "@/app/types";
 import Link from "next/link";
+import { useAuthRedirect } from "@/app/hooks/useAuthRedirect";
 
 const USERS_KEY = "users";
 
@@ -13,19 +15,7 @@ export default function RegisterPage() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState<string | null>(null);
 
-  useEffect(() => {
-    const sessionStr = localStorage.getItem("session");
-    if (sessionStr) {
-      try {
-        const session = JSON.parse(sessionStr);
-        if (session.expiresAt > Date.now()) {
-          router.push("/dashboard");
-        }
-      } catch (error) {
-        console.error("Error parsing session", error);
-      }
-    }
-  }, [router]);
+  useAuthRedirect();
 
   const handleRegister = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
